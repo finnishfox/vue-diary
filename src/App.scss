@@ -1,0 +1,13 @@
+.App {
+  width: 70%;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  margin-top: 60px;
+}
+
+@media screen and (max-width: 600px) {
+  .App{
+    width: calc(100% - 20px);
+  }
+}

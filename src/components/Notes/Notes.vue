@@ -1,16 +1,14 @@
 <template>
     <article>
         <NoteForm v-on:addnote="addNote"/>
-        <p>I have {{notes.length}} notes</p>
-        <section v-for="note in notes">
-            <Note v-bind:text=note.text v-bind:date="note.date"/>
-        </section>
+        <p>I have {{notes.length}} notes:</p>
+            <Note v-for="(note,index) in sortedNotes" v-bind:text=note.text v-bind:date="note.date" v-bind:number="notes.length-index"/>
     </article>
 </template>
 
 <script>
-    import Note from './Note.vue';
-    import NoteForm from './NoteForm.vue';
+    import Note from '../Note/Note.vue';
+    import NoteForm from '../NoteForm/NoteForm.vue';
 
     export default {
         name: "Notes",
@@ -28,6 +26,11 @@
             addNote: function (text) {
                 const newNote = {text: text, date: new Date()};
                 this.notes.push(newNote);
+            }
+        },
+        computed:{
+            sortedNotes:function () {
+                return this.notes.sort((a,b)=>b.date - a.date);
             }
         }
     }

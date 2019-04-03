@@ -1,5 +1,15 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from 'vue';
+import './plugins/vuetify';
+import App from './App.vue';
+import Vuetify from 'vuetify';
+import 'vuetify/dist/vuetify.min.css';
+import colors from 'vuetify/es5/util/colors';
+
+Vue.use(Vuetify,{
+    theme: {
+        primary: colors.deepOrange.lighten1,
+    }
+});
 
 Vue.config.productionTip = false;
 
